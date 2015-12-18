@@ -2,12 +2,11 @@
   "manifest_version": 2,
 
   "name": "SoundCloud Power Button",
-  "description": "Give  user the Power",
+  "description": "Gives  you the Power",
   "version": "1.0",
-
+ "web_accessible_resources": ["sc_ui_events.js"],
   "browser_action": {
-    "default_icon": "icon.png",
-    "default_popup": "popup.html"
+    "default_icon": "play.png"
   },
   "content_security_policy": "script-src 'self' https://connect.soundcloud.com/*; object-src 'self'",
 
@@ -19,10 +18,14 @@
   "background" : {
     "scripts": ["background.js"]
   },
+  "externally_connectable": {
+  "matches": ["https://soundcloud.com/*"]
+  },
   "content_scripts": [
     {
     "matches": ["https://soundcloud.com/*"],
-    "js": ["myscript.js"]
+    "js": ["myscript.js"],
+    "run_at": "document_end"
     }
   ]
 

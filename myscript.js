@@ -1,19 +1,8 @@
-/*alert("hi");
-document.querySelector('.playControl').click();
-// Listen for messages
-console.log("ff");
-chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
-    // If the received message has the expected format...
-    console.log("ff");
-    if (msg.text === 'issue_click') {
-        // Call the specified callback, passing
-        // the web-pages DOM content as argument
-        console.log("fffffff");
-        var playButton = getPlayButton();
-        document.querySelector('.playControl').click();
-    }
-});
-function getPlayButton() {
-
-}
-*/
+console.log("\n\nadding my script \n");
+var s = document.createElement('script');
+// TODO: add "script.js" to web_accessible_resources in manifest.json
+s.src = chrome.extension.getURL('sc_ui_events.js');
+s.onload = function() {
+    this.parentNode.removeChild(this);
+};
+(document.head || document.documentElement).appendChild(s);

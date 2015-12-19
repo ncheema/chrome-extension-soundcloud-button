@@ -10,29 +10,41 @@ function main(evt) {
     if (document.querySelector('.heroPlayButton') || document.querySelector('.sc-button-play')) {
       clearInterval(jsInitChecktimer);
       console.log("making progress");
-      addEventListeners();
+      addObserver();
     }
   }
 }
 
+
+
+
+
 //add event listeners to all play controls
-function addEventListeners() {
-  var playButtons = [document.querySelector('.heroPlayButton'),
-    document.querySelector('.sc-button-play'), document.querySelector('.playControl')
-  ];
-  for (var i = 0; i < playButtons.length; i++) {
-    if (playButtons[i] != null) {
-      playButtons[i].addEventListener('click', function(eventt) {
-        var msg = getMsg();
-        if (msg != undefined) sendMessg(msg);
-        console.log("sent message " );
-      });
-    } else console.log("got a null boi " + i);
-  }
+function addObserver() {
+  // select the target node
+  var target = document.querySelector('.playControl');
+
+  // create an observer instance
+  var observer = new MutationObserver(function(mutations) {
+    console.log(mutations[0].target.title)
+    var msg = getMsg();
+    if (msg != undefined) sendMessg(msg);
+    console.log("sent message ");
+  });
+
+  // configuration of the observer:
+  var config = {
+    attributes: true,
+    childList: true,
+    characterData: true
+  };
+
+  // pass in the target node, as well as the observer options
+  observer.observe(target, config);
 }
 
 //TODO: id is currently hardcoded, check security risks and correct way to publish
-var extensionId = "FFFFFFFFFFFF";
+var extensionId = "pcnpjocajfmcnbaiahneejbkjhddhbjg";
 
 //send msg to background script to make ui changes to button
 function sendMessg(msg) {

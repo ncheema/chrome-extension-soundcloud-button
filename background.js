@@ -1,3 +1,6 @@
+
+//playback button(s) status
+//msgs sent by injected content script
 chrome.runtime.onMessageExternal.addListener(
   function(request, sender, sendResponse) {
     if (request.playButton === "playing") {
@@ -8,9 +11,10 @@ chrome.runtime.onMessageExternal.addListener(
   });
 
 
-//for background console logs
-var tab;
-//listening to playback commands from pop.js
+//TODO : maybe move this beautiful global var to local
+var tab;  //current soundcloud tab
+
+//listening to playback commands from  extension button (through pop.js)
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (msg.command === "play") {
       console.log("calling playSong")

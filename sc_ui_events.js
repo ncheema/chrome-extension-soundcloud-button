@@ -29,7 +29,7 @@ function addObserver() {
 }
 
 //TODO: id is currently hardcoded, check security risks and correct way to publish
-var extensionId = "IMTIREDOFTYPINGTHISEVERYTIMELOL";
+var extensionId = "HITHERE";
 
 //send msg to background script to make ui changes to button
 function sendMessg(msg) {

@@ -1,25 +1,10 @@
 window.addEventListener("load", main, false);
 
 function main(evt) {
-  var jsInitChecktimer = setInterval(checkForJS_Finish, 122);
-
-  //wait for music list to load by checking for either the hero button
-  //or the sc-button-play is loaded
-  function checkForJS_Finish() {
-    //we need to grab one of the these buttons (playControl button always loads)
-    if (document.querySelector('.heroPlayButton') || document.querySelector('.sc-button-play')) {
-      clearInterval(jsInitChecktimer);
-      console.log("making progress");
-      addObserver();
-    }
-  }
+  addObserver();
 }
 
-
-
-
-
-//add event listeners to all play controls
+//observe changes in  to all playback controls
 function addObserver() {
   // select the target node
   var target = document.querySelector('.playControl');
@@ -44,7 +29,7 @@ function addObserver() {
 }
 
 //TODO: id is currently hardcoded, check security risks and correct way to publish
-var extensionId = "pcnpjocajfmcnbaiahneejbkjhddhbjg";
+var extensionId = "IMTIREDOFTYPINGTHISEVERYTIMELOL";
 
 //send msg to background script to make ui changes to button
 function sendMessg(msg) {

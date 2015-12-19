@@ -1,4 +1,23 @@
+//TODO : install html page
+chrome.runtime.onInstalled.addListener(function(details){
+  alert("ccc" + details.reason);
+  if(details.reason == "install"){
+//chrome.tabs.create({ url: chrome.extension.getURL('welcome.html')});
 
+  }
+
+  });
+
+//binding for commands/shorcuts
+chrome.commands.onCommand.addListener(function(command) {
+  console.log('Command:', command);
+  if (command === "playback") {
+    console.log("calling playSong")
+    playSong();
+  } else if (command === "next") {
+    nextSong();
+  }
+});
 //playback button(s) status
 //msgs sent by injected content script
 chrome.runtime.onMessageExternal.addListener(

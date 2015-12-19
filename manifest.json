@@ -21,6 +21,26 @@
   "externally_connectable": {
   "matches": ["https://soundcloud.com/*"]
   },
+
+  "commands": {
+          "playback": {
+            "suggested_key": {
+              "default": "Ctrl+Shift+E",
+              "mac": "Command+Shift+E"
+            },
+            "description": "Play/Pause"
+          },
+
+          "next": {
+            "suggested_key": {
+              "default": "Ctrl+Shift+E",
+              "windows": "Alt+Shift+P",
+              "mac": "Alt+Shift+P"
+            },
+            "description": "Skip(Next)"
+          }
+        },
+
   "content_scripts": [
     {
     "matches": ["https://soundcloud.com/*"],

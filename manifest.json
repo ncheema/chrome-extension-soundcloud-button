@@ -4,7 +4,8 @@
   "name": "SoundCloud Power Button",
   "description": "Gives  you the Power",
   "version": "1.0",
- "web_accessible_resources": ["sc_ui_events.js"],
+  "web_accessible_resources": ["sc_ui_events.js"],
+  "options_page": "settings/controls.html",
   "browser_action": {
     "default_icon": "icons/play.png"
   },

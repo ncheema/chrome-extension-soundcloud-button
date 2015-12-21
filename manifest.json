@@ -6,7 +6,7 @@
   "version": "1.0",
  "web_accessible_resources": ["sc_ui_events.js"],
   "browser_action": {
-    "default_icon": "play.png"
+    "default_icon": "icons/play.png"
   },
   "content_security_policy": "script-src 'self' https://connect.soundcloud.com/*; object-src 'self'",
 

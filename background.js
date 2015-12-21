@@ -1,9 +1,7 @@
-//TODO : install html page
+//install html page
 chrome.runtime.onInstalled.addListener(function(details){
-  alert("ccc" + details.reason);
-  if(details.reason == "install"){
-//chrome.tabs.create({ url: chrome.extension.getURL('welcome.html')});
-
+  if(details.reason == "install" || details.reason == "update"){
+    chrome.tabs.create({ url: chrome.extension.getURL('settings/controls.html')});
   }
 
   });
@@ -23,9 +21,9 @@ chrome.commands.onCommand.addListener(function(command) {
 chrome.runtime.onMessageExternal.addListener(
   function(request, sender, sendResponse) {
     if (request.playButton === "playing") {
-      changeIcon("pause.png");
+      changeIcon("icons/pause.png");
     } else if (request.playButton === "paused") {
-      changeIcon("play.png");
+      changeIcon("icons/play.png");
     }
   });
 

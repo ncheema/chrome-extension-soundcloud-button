@@ -1,7 +1,9 @@
+/* Issues play/pause on soundcloud  */
+
 
 if (window.addEventListener) {
-  {window.addEventListener('load', play(), false);}
- }
+  window.addEventListener('load', play(), false);
+}
 //alert(document.querySelector('.playing'));
 function play() {
   var playButton = document.querySelector('.playControl');

@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
 
-  "name": "SoundCloud Power Button",
-  "description": "Gives  you the Power",
+  "name": "Play",
+  "description": "Control SoundCloud with a button",
   "version": "1.0",
   "web_accessible_resources": ["sc_ui_events.js"],
   "options_page": "settings/controls.html",

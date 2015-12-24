@@ -4,17 +4,15 @@ function main(evt) {
   addObserver();
 }
 
-//observe changes in  to all playback controls
+//observe changes in  playback controls
 function addObserver() {
   // select the target node
   var target = document.querySelector('.playControl');
 
   // create an observer instance
   var observer = new MutationObserver(function(mutations) {
-    console.log(mutations[0].target.title)
     var msg = getMsg();
     if (msg != undefined) sendMessg(msg);
-    console.log("sent message ");
   });
 
   // configuration of the observer:
@@ -28,12 +26,12 @@ function addObserver() {
   observer.observe(target, config);
 }
 
-//TODO: id is currently hardcoded, check security risks and correct way to publish
-var extensionId = "HITHERE";
 
+
+//extensionId is sent dynamically in the content script (myscript.js)
 //send msg to background script to make ui changes to button
 function sendMessg(msg) {
-  console.log("sending");
+  console.log("sending: " + msg);
   chrome.runtime.sendMessage(extensionId, {
       playButton: msg
     },

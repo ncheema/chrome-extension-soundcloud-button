@@ -8,9 +8,8 @@ chrome.runtime.onInstalled.addListener(function(details){
 
 //binding for commands/shorcuts
 chrome.commands.onCommand.addListener(function(command) {
-  console.log('Command:', command);
   if (command === "playback") {
-    console.log("calling playSong")
+    console.log("playback hit")
     playSong();
   } else if (command === "next") {
     nextSong();
@@ -29,12 +28,11 @@ chrome.runtime.onMessageExternal.addListener(
 
 
 //TODO : maybe move this beautiful global var to local
-var tab;  //current soundcloud tab
+
 
 //listening to playback commands from  extension button (through pop.js)
 chrome.runtime.onMessage.addListener(function (msg, sender, sendResponse) {
     if (msg.command === "play") {
-      console.log("calling playSong")
       playSong();
     }
     else if (msg.command === "next") {
@@ -51,7 +49,6 @@ function nextSong() {
     } else {
 
       tab = (results[0]);
-      console.log("calling playback")
       chrome.tabs.executeScript(tab.id, {file:"next.js"},
       function() {
         if (chrome.runtime.lastError) {
@@ -62,12 +59,12 @@ function nextSong() {
   });
 }
 
-
+var issuedNewTab = false;
 //check if the new tab opened has been loaded fully
 chrome.tabs.onUpdated.addListener( function (tabId, changeInfo, dtab) {
 
-  if (tab != undefined && tab.id == tabId && changeInfo.status == 'complete') {
-    console.log(changeInfo.status + tabId)
+  if (issuedNewTab && changeInfo.status == 'complete') {
+    issuedNewTab = false;
     chrome.tabs.executeScript(tabId, {file:"delayplayback.js"},
     function() {
       if (chrome.runtime.lastError) {
@@ -82,12 +79,11 @@ function playSong() {
   chrome.tabs.query({url: "https://soundcloud.com/*"}, function(results) {
   if (results.length == 0) {
         chrome.tabs.create({url: 'https://soundcloud.com/you/likes'}, function(newTab) {
-          tab = newTab;
-          console.log("created new tab: " + tab);
+          console.log("creating new soundcloud tab")
+          issuedNewTab = true;
         });
     } else {
         tab = (results[0]);
-        console.log("calling playback")
         chrome.tabs.executeScript(tab.id, {file:"playback.js"},
         function() {
           if (chrome.runtime.lastError) {
@@ -114,7 +110,6 @@ chrome.browserAction.onClicked.addListener(function (tab) {
 
         //Clear timer already set in earlier Click
         clearTimeout(timer);
-        console.log("Double click");
         nextSong();
 
         //Clear all Clicks
@@ -128,9 +123,8 @@ chrome.browserAction.onClicked.addListener(function (tab) {
     //Add a timer to detect next click to a sample of 250
     timer = setTimeout(function () {
         //No more clicks so, this is a single click
-        console.log("Single click");
         playSong();
-
+        console.log("issuing single click")
         //Clear all timers
         clearTimeout(timer);
 
@@ -144,6 +138,5 @@ function changeIcon(img) {
   chrome.browserAction.setIcon({
       "path": img
   }, function () {
-      console.log("Changed Icon");
   });
 }

@@ -1,9 +1,8 @@
-# Sync - Chrome Extension 
-is a chrome extension which lets you control soundcloud playback(play, pause, next) through a button
+# Play - Chrome Extension
+is a chrome extension which lets you control SoundCloud playback(play, pause, next) through the extension button. **Single Click** the extension icon to `Play` or `Pause` the track. **Double Click** the extension icon to `Skip Track`.
 
 
-
-## Current Features 
+## Current Features
 
   - Responsive UI Extension Button (shows if music is playing or paused/stopped)
   - Play/Pause Song
@@ -18,10 +17,6 @@ is a chrome extension which lets you control soundcloud playback(play, pause, ne
 
 
 
-
 ## License
 
 	MIT (Free Software, Cheers!)
-
-
-

@@ -3,12 +3,15 @@
 
   "name": "Play",
   "description": "Control SoundCloud with a button",
-  "version": "1.0",
+  "version": "0.0.0.1",
   "web_accessible_resources": ["sc_ui_events.js"],
   "options_page": "settings/controls.html",
   "browser_action": {
     "default_icon": "icons/play.png"
   },
+  "icons": { "16": "icons/play.png",
+           "48": "icons/play.png",
+          "128": "icons/play.png" },
   "content_security_policy": "script-src 'self' https://connect.soundcloud.com/*; object-src 'self'",
 
   "permissions": [

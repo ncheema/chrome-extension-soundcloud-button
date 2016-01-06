@@ -17,9 +17,7 @@ function addObserver() {
 
   // configuration of the observer:
   var config = {
-    attributes: true,
-    childList: true,
-    characterData: true
+    attributes: true
   };
 
   // pass in the target node, as well as the observer options
